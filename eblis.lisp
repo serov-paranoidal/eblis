@@ -10,15 +10,13 @@
 (defvar *return-string* nil "The string that will be returned in case the RETURN-RESULT argument to BF-EVAL will be non-NIL")
 (defvar *return-result* nil "The variable responsible for returning the result of BF-EVAL like typical functions do (in case it is T) or just side-effectively doing evaluation (if it's NIL)")
 
-(defun bf-eval (bf-source &key (memory nil) (pointer nil) (loop-stack nil) (pb-functions nil) (return-string nil) (memory-size 30000) (cell-size 8) (return-result nil))
+(defun bf-eval (bf-source &key (memory nil) (pointer nil) (loop-stack nil) (return-string nil) (memory-size 30000) (cell-size 8) (return-result nil))
   (let ((*memory* (if-exists-return memory
                       :else (make-array memory-size :element-type `(unsigned-byte ,cell-size) :initial-element 0 :adjustable nil)))
         (*pointer* (if-exists-return pointer
                        :else 0))
         (*loop-stack* (if-exists-return loop-stack
                           :else (make-array 0 :element-type 'bignum :adjustable t)))
-        (*pb-functions* (if-exists-return pb-functions
-                            :else (make-hash-table :test #'eql)))
         (*return-string* (if-exists-return return-string
                              :else ""))
         (*cell-size* cell-size)
