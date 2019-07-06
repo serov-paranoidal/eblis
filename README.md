@@ -7,18 +7,26 @@ First of all, the name is abbreviation, and quite a meaningful one. But also the
 ## Extencibility
 Well, the ability to extend the software is quite a typical selling point of lots of Lisp software pieces. I won't give a reasoning behind this, both because I don't know and I'm too lazy to reason about every atom of my project.
 But there certainly will be extensibility. I'm planning to implement it through the init file with the characters and corresponding functions framed like that:
-    + : bf-inc
-    - : bf-dec
-    [ : bf-loop
+```
++ : bf-inc
+- : bf-dec
+[ : bf-loop
+```
 of course, if you have suggestions on clearer and faster approach to this, you can always email me at serov-paranoidal@protonmail.com or even make a code investment through pull requests.
 
 ## Usage
 Sadly, in the current state this interpreter is not even an executable. Now it's only a simple shared library for Common Lisp. But through the time I'm planning to grow this project to full-powered and usable interpreter. But, if you're interested in how to use it even in the surrent state, then here it is:
-       (bf-eval "+++++ +++++")
+```
+(bf-eval "+++++ +++++")
+```
 will just evaluate given piece of code
-     (bf-eval "+++++ +++++" :memory-size 10 :cell-size 1)
+```
+(bf-eval "+++++ +++++" :memory-size 10 :cell-size 1)
+```
 should basically create memory-tape with 10 bit-sized cells, but it won't, because it's not implemented yet.
-       (bf-eval ", +++++ +++++ ." :return-result t)
+```
+(bf-eval ", +++++ +++++ ." :return-result t)
+```
 will return all the printed characters as a string like any other Lisp function does.
 
 ## Plans
